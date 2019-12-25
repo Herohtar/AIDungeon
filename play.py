@@ -304,7 +304,7 @@ def play_aidungeon_2():
 
             else:
                 if action[0] == '"':
-                    action = "You say " + action
+                    action = "\n> You say " + action + "\n"
 
                 else:
                     action = action.strip()
