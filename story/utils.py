@@ -123,6 +123,8 @@ def cut_trailing_sentence(text):
     last_punc = max(text.rfind("."), text.rfind("!"), text.rfind("?"))
     if last_punc <= 0:
         last_punc = len(text) - 1
+    else:
+        last_punc += 1
 
     et_token = text.find("<")
     if et_token > 0:
