@@ -126,7 +126,7 @@ def cut_trailing_sentence(text):
         break_pos = min(break_pos, et_token)
 
     act_token = text.find(">")
-    if act_token > 0:
+    if act_token >= 0:
         break_pos = min(break_pos, act_token)
 
     text = text[:break_pos]
