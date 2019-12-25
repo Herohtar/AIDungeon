@@ -132,7 +132,7 @@ def cut_trailing_sentence(text):
     text = text[:break_pos]
     text = cut_trailing_quotes(text)
 
-    last_punc = max(text.rfind("."), text.rfind("!"), text.rfind("?"))
+    last_punc = max(text.rfind("."), text.rfind("!"), text.rfind("?"), text.rfind('"'))
     if last_punc > 0:
         text = text[:last_punc + 1]
 
