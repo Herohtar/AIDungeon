@@ -118,23 +118,23 @@ def cut_trailing_action(text):
 
 def cut_trailing_sentence(text):
     text = standardize_punctuation(text)
-    text = cut_trailing_quotes(text)
 
-    last_punc = max(text.rfind("."), text.rfind("!"), text.rfind("?"))
-    if last_punc <= 0:
-        last_punc = len(text) - 1
-    else:
-        last_punc += 1
+    break_pos = len(text)
 
     et_token = text.find("<")
     if et_token > 0:
-        last_punc = min(last_punc, et_token - 1)
+        break_pos = min(break_pos, et_token)
 
     act_token = text.find(">")
     if act_token > 0:
-        last_punc = min(last_punc, act_token - 1)
+        break_pos = min(break_pos, act_token)
 
-    text = text[:last_punc]
+    text = text[:break_pos]
+    text = cut_trailing_quotes(text)
+
+    last_punc = max(text.rfind("."), text.rfind("!"), text.rfind("?"))
+    if last_punc > 0:
+        text = text[:last_punc + 1]
 
     text = cut_trailing_action(text)
     return text
