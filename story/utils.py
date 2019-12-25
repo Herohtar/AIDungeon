@@ -118,6 +118,8 @@ def cut_trailing_action(text):
 
 def cut_trailing_sentence(text):
     text = standardize_punctuation(text)
+    text = cut_trailing_quotes(text)
+
     last_punc = max(text.rfind("."), text.rfind("!"), text.rfind("?"))
     if last_punc <= 0:
         last_punc = len(text) - 1
@@ -134,7 +136,6 @@ def cut_trailing_sentence(text):
 
     text = text[:last_punc]
 
-    text = cut_trailing_quotes(text)
     text = cut_trailing_action(text)
     return text
 
