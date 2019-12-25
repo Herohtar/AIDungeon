@@ -303,22 +303,23 @@ def play_aidungeon_2():
                     console_print("Unknown command: {}".format(command))
 
             else:
-                if action[0] == '"':
-                    action = "\n> You say " + action + "\n"
+                if len(action) > 0:
+                    if action[0] == '"':
+                        action = "\n> You say " + action + "\n"
 
-                else:
-                    action = action.strip()
+                    else:
+                        action = action.strip()
 
-                    if "you" not in action[:6].lower() and "I" not in action[:6]:
-                        action = action[0].lower() + action[1:]
-                        action = "You " + action
+                        if "you" not in action[:6].lower() and "I" not in action[:6]:
+                            action = action[0].lower() + action[1:]
+                            action = "You " + action
 
-                    if action[-1] not in [".", "?", "!"]:
-                        action = action + "."
+                        if action[-1] not in [".", "?", "!"]:
+                            action = action + "."
 
-                    action = first_to_second_person(action)
+                        action = first_to_second_person(action)
 
-                    action = "\n> " + action + "\n"
+                        action = "\n> " + action + "\n"
 
                 result = "\n" + story_manager.act(action)
                 if len(story_manager.story.results) >= 2:
