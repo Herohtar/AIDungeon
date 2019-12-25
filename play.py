@@ -303,12 +303,7 @@ def play_aidungeon_2():
                     console_print("Unknown command: {}".format(command))
 
             else:
-                if action == "":
-                    action = ""
-                    result = story_manager.act(action)
-                    console_print(result)
-
-                elif action[0] == '"':
+                if action[0] == '"':
                     action = "You say " + action
 
                 else:
